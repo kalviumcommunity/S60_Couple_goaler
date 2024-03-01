@@ -2,7 +2,7 @@
 
 ## **Project Idea:**
 
-The project serves as a platform to showcase the places for couples in Kalasalingam colleges to chill out. It will contain best to worst places for them.
+The project serves as a platform to showcase the places for couples in Kalasalingam college to chill out. It will contain best to worst places for them.
 
 ## **Requirements fulfilled from the Criterias of ASAP project:**
 
@@ -22,7 +22,7 @@ Couples can easily search and find the best suitable places for them and to enjo
 
 # **_User lovable interface:_**
 
-The innterface is dome romanntic and pleasing.
+The interface is done romantic and pleasing.
 
 # **_Places and sorts:_**
 
