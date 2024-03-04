@@ -1,7 +1,7 @@
 {
   "name": "couple-goaler",
   "version": "1.0.0",
-  "description": "",
+  "description": "The project serves as a platform to showcase the places for couples in Kalasalingam college to chill out. It will contain best to worst places for them.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
