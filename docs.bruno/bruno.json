@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Couple-goaler",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
