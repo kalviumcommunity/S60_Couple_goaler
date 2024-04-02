@@ -1,0 +1,52 @@
+[
+  {
+    "places": "Goa",
+    "Rating": 4.5,
+    "PriceApprox": 100000
+  },
+  {
+    "places": "Shimla",
+    "Rating": 4.4,
+    "PriceApprox": 50000
+  },
+  {
+    "places": "Srinagar",
+    "Rating": 3,
+    "PriceApprox": 60000
+  },
+  {
+    "places": "Darjeeling",
+    "Rating": 4,
+    "PriceApprox": 50000
+  },
+  {
+    "places": "Munnar",
+    "Rating": 4,
+    "PriceApprox": 25000
+  },
+  {
+    "places": "Ooty",
+    "Rating": 4,
+    "PriceApprox": 15000
+  },
+  {
+    "places": "Pondicherry",
+    "Rating": 3,
+    "PriceApprox": 25000
+  },
+  {
+    "places": "Coorg",
+    "Rating": 3,
+    "PriceApprox": 30000
+  },
+  {
+    "places": "Agra",
+    "Rating": 3.5,
+    "PriceApprox": 50000
+  },
+  {
+    "places": "Alleppey",
+    "Rating": 4.5,
+    "PriceApprox": 30000
+  }
+]
