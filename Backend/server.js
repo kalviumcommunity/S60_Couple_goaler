@@ -1,9 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const dotenv = require('dotenv').config();
 let app = express();
 app.use(cors());
+app.use(bodyParser.json());
 const API_KEY = process.env.API_KEY;
 const ConnectDB = async () => {
   try {
@@ -13,7 +15,6 @@ const ConnectDB = async () => {
     console.log('error on connecting', err.message);
   }
 };
-
 app.get('/store', (req, res) => {
   Model.find({})
     .then((data) => {
@@ -23,6 +24,13 @@ app.get('/store', (req, res) => {
       console.log(err, 'error');
     });
   // res.send('hello');
+});
+
+app.post('/store', async (req, res) => {
+  // console.log('data received',req.body);
+  console.log(req.body);
+  res.send(req.body);
+  await Model.create(req.body);
 });
 
 const schema = new mongoose.Schema({
@@ -94,8 +102,7 @@ const Model = mongoose.model('location', schema);
 //     });
 // };
 
-app.listen(8080, () => {
-  ConnectDB();
-
+app.listen(8080, async () => {
   console.log('Port listening to 8080 port');
+  await ConnectDB();
 });

@@ -1,11 +1,12 @@
 import React from 'react';
+import "./App.css"
 
 const EntityCard = ({entity}) => {
   return (
     <div>
-      <h2>{entity.places}</h2>
-      <p>Rating:{entity.Rating}</p>
-      <p>Security:{entity.Security}</p>
+      <h3 className='font-bold'>{entity.places}</h3>
+      <p>Rating: {entity.Rating}⭐</p>
+      <p>Price: Rs. {entity.PriceApprox}</p>
     </div>
   );
 };
