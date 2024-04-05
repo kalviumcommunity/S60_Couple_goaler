@@ -33,6 +33,12 @@ app.post('/store', async (req, res) => {
   await Model.create(req.body);
 });
 
+app.put('/store/:id', (req, res) => {
+  Model.findByIdAndUpdate({ _id: req.params.id }, req.body);
+  console.log("added")
+  res.send("data Updated")
+});
+
 app.delete('/store/:id', async (req, res) => {
   try {
     const deleted = await Model.findByIdAndDelete(req.params.id);

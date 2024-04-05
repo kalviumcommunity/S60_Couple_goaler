@@ -4,6 +4,7 @@ import axios from 'axios';
 import Entity from './EntityCard';
 import Form from './Form';
 import Home from './Home';
+import Update from './Update';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
 function App() {
@@ -24,13 +25,13 @@ function App() {
         console.log('error', err);
       });
   }, []);
-  
 
   return (
     <div>
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/Form" element={<Form />}></Route>
+        <Route exact path="/UpdateForm" element={<Update />}></Route>
       </Routes>
       {/* <h1>Enitites</h1>
       <div className="grid grid-cols-2 gap-x-8 gap-y-8">
