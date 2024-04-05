@@ -33,6 +33,18 @@ app.post('/store', async (req, res) => {
   await Model.create(req.body);
 });
 
+app.delete('/store/:id', async (req, res) => {
+  try {
+    const deleted = await Model.findByIdAndDelete(req.params.id);
+    console.log(deleted);
+    res.send('deleted');
+  } catch {
+    (error) => {
+      console.log(error);
+    };
+  }
+});
+
 const schema = new mongoose.Schema({
   places: String,
   Rating: Number,

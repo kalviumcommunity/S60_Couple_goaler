@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios';
 import Entity from './EntityCard';
 import Form from './Form';
-import Home from "./Home"
+import Home from './Home';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
 function App() {
@@ -24,6 +24,8 @@ function App() {
         console.log('error', err);
       });
   }, []);
+  
+
   return (
     <div>
       <Routes>

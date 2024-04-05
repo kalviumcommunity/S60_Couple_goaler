@@ -24,6 +24,17 @@ function Home() {
         console.log('error', err);
       });
   }, []);
+  const deletingTheItem = (id) => {
+    console.log("hi")
+    axios.delete(`http://localhost:8080/store/${id}`)
+      .then((res) => {
+        console.log(res, 'deleted');
+        location.reload();
+      })
+      .catch((error) => {
+        console.log('error', error);
+      });
+  };
   return (
     <div className="bg-pink-200 ">
       <div className=" flex justify-center text-center">
@@ -41,17 +52,20 @@ function Home() {
               <Entity key={index} entity={entity} />
             </div>
             <div className="w-7/12 flex justify-evenly ml-24 p-0.5">
-              <button class="bg-red-500 text-black-300 border border-rose-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
-                <span class="bg-rose-300 shadow-rose-300 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
+              <button
+                className="bg-red-500 text-black-300 border border-rose-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group"
+                onClick={() => deletingTheItem(entity._id)}
+              >
+                <span className="bg-rose-300 shadow-rose-300 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
                 Delete
               </button>
               <button
-                class="bg-purple-500 text-black-300 border border-rose-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group"
+                className="bg-purple-500 text-black-300 border border-rose-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group"
                 onClick={() => {
                   navigate('/Form');
                 }}
               >
-                <span class="bg-rose-300 shadow-rose-300 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
+                <span className="bg-rose-300 shadow-rose-300 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
                 Update
               </button>
             </div>
