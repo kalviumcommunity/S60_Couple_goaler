@@ -3,9 +3,12 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv').config();
+
 let app = express();
+
 app.use(cors());
 app.use(bodyParser.json());
+
 const API_KEY = process.env.API_KEY;
 const ConnectDB = async () => {
   try {
@@ -33,10 +36,10 @@ app.post('/store', async (req, res) => {
   await Model.create(req.body);
 });
 
-app.put('/store/:id', (req, res) => {
-  Model.findByIdAndUpdate({ _id: req.params.id }, req.body);
-  console.log("added")
-  res.send("data Updated")
+app.put('/store/:id', async (req, res) => {
+  await Model.findByIdAndUpdate({ _id: req.params.id }, req.body);
+  console.log('added');
+  res.send('data Updated');
 });
 
 app.delete('/store/:id', async (req, res) => {
