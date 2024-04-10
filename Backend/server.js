@@ -3,9 +3,12 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv').config();
+
 let app = express();
+
 app.use(cors());
 app.use(bodyParser.json());
+
 const API_KEY = process.env.API_KEY;
 const ConnectDB = async () => {
   try {
@@ -31,6 +34,24 @@ app.post('/store', async (req, res) => {
   console.log(req.body);
   res.send(req.body);
   await Model.create(req.body);
+});
+
+app.put('/store/:id', async (req, res) => {
+  await Model.findByIdAndUpdate({ _id: req.params.id }, req.body);
+  console.log('added');
+  res.send('data Updated');
+});
+
+app.delete('/store/:id', async (req, res) => {
+  try {
+    const deleted = await Model.findByIdAndDelete(req.params.id);
+    console.log(deleted);
+    res.send('deleted');
+  } catch {
+    (error) => {
+      console.log(error);
+    };
+  }
 });
 
 const schema = new mongoose.Schema({
