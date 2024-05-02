@@ -17,8 +17,8 @@ const ConnectDB = async () => {
   } catch (err) {
     console.log('error on connecting', err.message);
   }
+  console.log("connected")
 };
-console.log("connected")
 app.get('/store', (req, res) => {
   Model.find({})
     .then((data) => {
