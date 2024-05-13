@@ -31,7 +31,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/Form" element={<Form />}></Route>
-        <Route exact path="/UpdateForm" element={<Update />}></Route>
+        <Route exact path="/Update/:id" element={<Update />}></Route>
       </Routes>
       {/* <h1>Enitites</h1>
       <div className="grid grid-cols-2 gap-x-8 gap-y-8">

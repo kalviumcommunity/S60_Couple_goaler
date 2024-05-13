@@ -4,7 +4,6 @@ import axios from 'axios';
 import Entity from './EntityCard';
 import Form from './Form';
 import Update from './Update';
-
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
 function Home() {
@@ -19,7 +18,6 @@ function Home() {
         if (res.data.length > 0) {
           setEntities(res.data);
         }
-        // setEntities(res.data);
       })
       .catch((err) => {
         console.log('error', err);
@@ -37,13 +35,6 @@ function Home() {
         console.log('error', error);
       });
   };
-  // const updatingTheitem = (id) => {
-  //   console.log('Upd');
-  //   axios.put(`http://localhost:8080/store/${id}`)
-  //   .then((res)=>{
-
-  //   })
-  // };
   return (
     <div className="bg-pink-200 ">
       <div className=" flex justify-center text-center">
@@ -72,7 +63,7 @@ function Home() {
               <button
                 className="bg-red-500 text-black-300 border border-rose-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group"
                 onClick={() => {
-                  navigate('/Update');
+                  navigate(`/Update/${entity._id}`);
                 }}
               >
                 <span className="bg-rose-300 shadow-rose-300 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
@@ -82,9 +73,6 @@ function Home() {
           </div>
         ))}
       </div>
-      {/* <div>
-        <Form />
-      </div> */}
       <div className="flex justify-around">
         <button
           className="bg-purple-500 text-black-300 border border-rose-300 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group"
