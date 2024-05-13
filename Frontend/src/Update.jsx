@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import Home from "./Home"
 
 function Update() {
@@ -18,10 +18,11 @@ function Update() {
       [name]: value,
     }));
   };
-  const updatingTheitem = (id) => {
+  const {id}=useParams()
+  const updatingTheitem = () => {
     console.log('Upd');
     axios
-      .put(`http://localhost:8080/store/${id}`)
+      .put(`http://localhost:8080/store/${id}`,update)
       .then((res) => {
         console.log(res);
         navigate('/');
