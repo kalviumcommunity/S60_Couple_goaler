@@ -10,6 +10,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const API_KEY = process.env.API_KEY;
+const PORT = process.env.PORT
 const ConnectDB = async () => {
   try {
     await mongoose.connect(API_KEY);
@@ -64,7 +65,7 @@ const schema = new mongoose.Schema({
 const Model = mongoose.model('location', schema);
 
 
-app.listen(8080, async () => {
-  console.log('Port listening to 8080 port');
+app.listen(PORT, async () => {
+  console.log(`Port listening to {PORT} port`);
   await ConnectDB();
 });
