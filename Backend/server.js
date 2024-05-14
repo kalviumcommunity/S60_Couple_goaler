@@ -20,34 +20,9 @@ const ConnectDB = async () => {
     console.log('connected to DB');
   } catch (err) {
     console.log('error on connecting', err.message);
-  } 
+  }
   console.log('connected');
 };
-
-// app.post('/store', async (req, res) => {
-//   // console.log('data received',req.body);
-//   console.log(req.body);
-//   res.send(req.body);
-//   await Model.create(req.body);
-// });
-
-// app.put('/store/:id', async (req, res) => {
-//   await Model.findByIdAndUpdate({ _id: req.params.id }, req.body);
-//   console.log('added');
-//   res.send('data Updated');
-// });
-
-// app.delete('/store/:id', async (req, res) => {
-//   try {
-//     const deleted = await Model.findByIdAndDelete(req.params.id);
-//     console.log(deleted);
-//     res.send('deleted');
-//   } catch {
-//     (error) => {
-//       console.log(error);
-//     };
-//   }
-// });
 
 const schema = new mongoose.Schema({
   places: String,
@@ -55,9 +30,11 @@ const schema = new mongoose.Schema({
   PriceApprox: Number,
 });
 
-const Model = mongoose.model('location', schema);
+// const Model = mongoose.model('location', schema);
 
 app.listen(PORT, async () => {
   console.log(`Port listening to ${PORT} port`);
   await ConnectDB();
 });
+
+// module.exports = { Model };
