@@ -66,6 +66,6 @@ const Model = mongoose.model('location', schema);
 
 
 app.listen(PORT, async () => {
-  console.log(`Port listening to {PORT} port`);
+  console.log(`Port listening to ${PORT} port`);
   await ConnectDB();
 });
