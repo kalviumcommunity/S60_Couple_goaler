@@ -3,33 +3,26 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv').config();
+const UserRouter = require('./Routes/Routes.js');
 
 let app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 
+app.use('/', UserRouter);
+
 const API_KEY = process.env.API_KEY;
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 const ConnectDB = async () => {
   try {
     await mongoose.connect(API_KEY);
     console.log('connected to DB');
   } catch (err) {
     console.log('error on connecting', err.message);
-  }
-  console.log("connected")
+  } 
+  console.log('connected');
 };
-app.get('/store', (req, res) => {
-  Model.find({})
-    .then((data) => {
-      res.json(data);
-    })
-    .catch((err) => {
-      console.log(err, 'error');
-    });
-  // res.send('hello');
-});
 
 // app.post('/store', async (req, res) => {
 //   // console.log('data received',req.body);
@@ -63,7 +56,6 @@ const schema = new mongoose.Schema({
 });
 
 const Model = mongoose.model('location', schema);
-
 
 app.listen(PORT, async () => {
   console.log(`Port listening to ${PORT} port`);
