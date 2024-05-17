@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
 import Entity from './EntityCard';
-import Form from './Form';
-import Home from './Home';
-import Update from './Update';
+import Form from './Components/Form';
+import Home from './Components/Home';
+import Update from './Components/Update';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
 function App() {
