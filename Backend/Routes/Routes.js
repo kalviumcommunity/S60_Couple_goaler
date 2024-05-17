@@ -25,7 +25,7 @@ router.post('/store', async (req, res) => {
     await newModel.save();
     res.json(newModel);
   } catch (Error) {
-    res.send(Error);
+    res.status(500).send('An error occurred');
   }
 });
 
