@@ -36,12 +36,12 @@ function Form() {
     <div>
       <div className="max-w-md mx-auto mt-10 relative overflow-hidden z-10 bg-rose-100 p-8 rounded-lg shadow-md before:w-24 before:h-24 before:absolute before:bg-purple-500 before:rounded-full before:-z-10 before:blur-2xl after:w-32 after:h-32 after:absolute after:bg-sky-400 after:rounded-full after:-z-10 after:blur-xl after:top-24 after:-right-12">
         <h2 className="text-2xl text-sky-900 font-bold mb-6">
-          Add your lovable location
+          Add your lovable location here
         </h2>
 
         <form method="post" action="#">
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600" for="name">
+            <label className="block text-sm font-medium text-gray-600" htmlFor="name">
               Place Name
             </label>
             <input
@@ -55,7 +55,7 @@ function Form() {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600" for="Rating">
+            <label className="block text-sm font-medium text-gray-600" htmlFor="Rating">
               Rating
             </label>
             <input
@@ -70,7 +70,7 @@ function Form() {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600" for="PriceApprox">
+            <label className="block text-sm font-medium text-gray-600" htmlFor="PriceApprox">
               Price Approximation
             </label>
             <input
