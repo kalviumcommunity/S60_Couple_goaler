@@ -24,14 +24,13 @@ router.post('/store', async (req, res) => {
     const newModel = new Model(req.body);
     await newModel.save();
     res.json(newModel);
-  } catch (Err) {
-    res.send(Err);
+  } catch (Error) {
+    res.send(Error);
   }
 });
 
 router.put('/store/:id', async (req, res) => {
   await Model.findByIdAndUpdate({ _id: req.params.id }, req.body);
-  console.log('added');
   res.send('data Updated');
 });
 
