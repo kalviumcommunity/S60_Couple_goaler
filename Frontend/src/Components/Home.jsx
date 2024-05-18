@@ -3,7 +3,7 @@ import '../App.css';
 import axios from 'axios';
 import Entity from '../EntityCard';
 import Form from './Form';
-import Update from './Update';
+// import Update from './Update';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
 function Home() {
@@ -12,7 +12,7 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8080/store')
+      .get('https://s60-couple-goaler.onrender.com/store')
       .then((res) => {
         console.log(res, 'pras');
         if (res.data.length > 0) {
@@ -26,7 +26,7 @@ function Home() {
   const deletingTheItem = (id) => {
     console.log('hi');
     axios
-      .delete(`http://localhost:8080/store/${id}`)
+      .delete(`https://s60-couple-goaler.onrender.com/store/${id}`)
       .then((res) => {
         console.log(res, 'deleted');
         location.reload();

@@ -21,7 +21,7 @@ function Form() {
     // e.preventDefault();
     console.log(state);
     axios
-      .post('http://localhost:8080/store', state)
+      .post('https://s60-couple-goaler.onrender.com/store', state)
       .then((Res) => {
         console.log(Res);
         navigate('/');
