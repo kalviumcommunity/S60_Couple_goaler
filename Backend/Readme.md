@@ -27,3 +27,6 @@ The interface is done romantic and pleasing.
 # **_Places and sorts:_**
 
 Couples can view their suitable places by sorting out their preferance. Also they can click and know more about the places
+
+
+Render link : https://s60-couple-goaler.onrender.com

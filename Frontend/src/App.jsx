@@ -4,7 +4,7 @@ import axios from 'axios';
 import Entity from './EntityCard';
 import Form from './Components/Form';
 import Home from './Components/Home';
-import Update from './Components/Update';
+// import Update from './Components/Update';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8080/store')
+      .get('https://s60-couple-goaler.onrender.com/store')
       .then((res) => {
         console.log(res, 'pras');
         if (res.data.length > 0) {
@@ -31,7 +31,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/Form" element={<Form />}></Route>
-        <Route exact path="/Update/:id" element={<Update />}></Route>
+        {/* <Route exact path="/Update/:id" element={<Update />}></Route> */}
       </Routes>
       {/* <h1>Enitites</h1>
       <div className="grid grid-cols-2 gap-x-8 gap-y-8">
