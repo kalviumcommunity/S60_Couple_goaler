@@ -90,7 +90,7 @@ router.post('/signup', async (req, res) => {
       const newUser = await User.create({ ...value, password: hashedPassword });
       res.send({ message: 'ok' });
     } catch (error) {
-      console.log('error', error);
+      console.log(error);
     }
   }
 });
@@ -106,7 +106,7 @@ router.post('/login', async (req, res) => {
     if (user && bcrypt.compare(req.body.password, user.password)) {
       res.json(user);
     } else {
-      res.send({ message: 'Invalid credentials or user not existed' });
+      res.send({ message: 'Check the credentials Please...' });
     }
   } catch (error) {
     console.log(error);
