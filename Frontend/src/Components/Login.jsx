@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import Home from './Home';
 
 function Login(props) {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ function Login(props) {
     password: '',
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
@@ -18,13 +20,17 @@ function Login(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(formData);
+      //   console.log(formData);
       const res = await axios.post('http://localhost:8080/login', formData);
       document.cookie = 'username=' + res.data.name;
       console.log(res.data);
-      //   setFormData(res.data);
-      setIsLoggedIn(true);
-      //   console.log(res.data.message);
+      if (res.data.message === 'Login sucessful') {
+        setIsLoggedIn(true);
+        navigate('/');
+      } else {
+        alert(res.data.message);
+        navigate('/');
+      }
     } catch (error) {
       console.log('error on fetching', error);
     }
@@ -34,8 +40,8 @@ function Login(props) {
     try {
       // Send a POST request to the /logout endpoint
       console.log('ewj');
-      document.cookie ='username=; expires=';
-      location.reload()
+      document.cookie = 'username=; expires=';
+      location.reload();
       //   setFormData({ email: '', password: '' });
       setIsLoggedIn(false);
     } catch (error) {

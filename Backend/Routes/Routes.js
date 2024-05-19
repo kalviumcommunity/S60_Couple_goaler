@@ -12,8 +12,7 @@ const userJoiSchema = Joi.object({
   email: Joi.string().email().required(),
   confirmemail: Joi.string().email().required(),
   password: Joi.string().required(),
-  confirmpassword: Joi.string()
-    .required(),
+  confirmpassword: Joi.string().required(),
   gender: Joi.string().required(),
 });
 
@@ -90,7 +89,7 @@ router.post('/signup', async (req, res) => {
       const newUser = await User.create({ ...value, password: hashedPassword });
       res.send({ message: 'ok' });
     } catch (error) {
-      console.log('error', error);
+      console.log(error);
     }
   }
 });
@@ -99,15 +98,17 @@ router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
 
-    const salt = await bcrypt.genSalt(10);
-
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
-    if (user && bcrypt.compare(req.body.password, user.password)) {
-      res.json(user);
-    } else {
-      res.send({ message: 'Invalid credentials or user not existed' });
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid credentials' });
     }
+    const validPassword = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
+    if (!validPassword) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+    res.status(200).json({ message: 'Login successful', user });
   } catch (error) {
     console.log(error);
     res.send('Error in login');
