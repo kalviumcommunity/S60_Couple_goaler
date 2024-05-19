@@ -4,6 +4,8 @@ import axios from 'axios';
 import Entity from './EntityCard';
 import Form from './Components/Form';
 import Home from './Components/Home';
+import Login from './Components/Login';
+import Signup from './Components/Signup';
 // import Update from './Components/Update';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
@@ -31,6 +33,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/Form" element={<Form />}></Route>
+        <Route exact path="/Login" element={<Login />}></Route>
+        <Route exact path="/Signup" element={<Signup />}></Route>
         {/* <Route exact path="/Update/:id" element={<Update />}></Route> */}
       </Routes>
       {/* <h1>Enitites</h1>
