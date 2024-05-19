@@ -3,7 +3,7 @@ import '../App.css';
 import axios from 'axios';
 import Entity from '../EntityCard';
 import Form from './Form';
-// import Update from './Update';
+import Update from './Update';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 
 function Home() {
