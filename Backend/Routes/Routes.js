@@ -89,7 +89,7 @@ router.post('/signup', async (req, res) => {
       const newUser = await User.create({ ...value, password: hashedPassword });
       res.send({ message: 'ok' });
     } catch (error) {
-      console.log(error);
+      console.error({ message: 'Error during signup', error })
     }
   }
 });
