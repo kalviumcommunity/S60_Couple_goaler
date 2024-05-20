@@ -23,6 +23,7 @@ function Home() {
         console.log('error', err);
       });
   }, []);
+  
   const deletingTheItem = (id) => {
     console.log('hi');
     axios
