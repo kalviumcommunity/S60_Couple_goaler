@@ -71,10 +71,10 @@ router.delete('/store/:id', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
-  const token=jwt.sign(req.body,"password")
-  console.log(token)
+  const token = jwt.sign(req.body, process.env.password);
+  console.log(token);
   if (user) {
-    res.send({ message: 'get out' });
+    res.send({ message: 'done' });
   } else {
     const { error, value } = userJoiSchema.validate(req.body);
     if (error) {
@@ -89,7 +89,11 @@ router.post('/signup', async (req, res) => {
     try {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(value.password, salt);
-      const newUser = await User.create({ ...value, password: hashedPassword, token:token });
+      const newUser = await User.create({
+        ...value,
+        password: hashedPassword,
+        token: token,
+      });
       res.send({ message: 'ok' });
     } catch (error) {
       console.error({ message: 'Error during signup', error });
