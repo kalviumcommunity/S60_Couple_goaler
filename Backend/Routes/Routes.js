@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const Model = require('../model');
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 let router = express.Router();
 router.use(express.json());
@@ -70,6 +71,8 @@ router.delete('/store/:id', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
+  const token=jwt.sign(req.body,"password")
+  console.log(token)
   if (user) {
     res.send({ message: 'get out' });
   } else {
@@ -86,10 +89,10 @@ router.post('/signup', async (req, res) => {
     try {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(value.password, salt);
-      const newUser = await User.create({ ...value, password: hashedPassword });
+      const newUser = await User.create({ ...value, password: hashedPassword, token:token });
       res.send({ message: 'ok' });
     } catch (error) {
-      console.error({ message: 'Error during signup', error })
+      console.error({ message: 'Error during signup', error });
     }
   }
 });

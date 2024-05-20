@@ -1,0 +1,29 @@
+meta {
+  name: plu
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://depth-itself.codedamn.app/api/data
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "squad": 60,
+    "name": "prasanna",
+    "mobile": "9789789789",
+    "dob": "29-10-2005",
+    "github": "Prasanna2910"
+  }
+}
+
+tests {
+  {"squad":60,
+  "name":"prasanna",
+    "mobile":"9789789789",
+  "dob":"29-10-2005",
+  "github":"Prasanna2910"}
+}
