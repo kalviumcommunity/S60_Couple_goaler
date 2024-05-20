@@ -8,12 +8,13 @@ const bcrypt = require('bcrypt');
 let router = express.Router();
 router.use(express.json());
 
+// added joi schema for validation
 const userJoiSchema = Joi.object({
   name: Joi.string().alphanum().min(2).max(40).required(),
   email: Joi.string().email().required(),
   confirmemail: Joi.string().email().required(),
-  password: Joi.string().required(),
-  confirmpassword: Joi.string().required(),
+  password: Joi.string().min(3).required(),
+  confirmpassword: Joi.string().min(3).required(),
   gender: Joi.string().required(),
 });
 
@@ -22,6 +23,7 @@ const userModelSchema = new mongoose.Schema({
   // profile: String,
   email: String,
   password: String,
+  token: String,
   gender: String,
 });
 
@@ -71,10 +73,10 @@ router.delete('/store/:id', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
-  const token=jwt.sign(req.body,"password")
-  console.log(token)
+  const token = jwt.sign(req.body, process.env.password);
+  console.log(token);
   if (user) {
-    res.send({ message: 'get out' });
+    res.send({ message: 'done' });
   } else {
     const { error, value } = userJoiSchema.validate(req.body);
     if (error) {
@@ -89,7 +91,11 @@ router.post('/signup', async (req, res) => {
     try {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(value.password, salt);
-      const newUser = await User.create({ ...value, password: hashedPassword, token:token });
+      const newUser = await User.create({
+        ...value,
+        password: hashedPassword,
+        token: token,
+      });
       res.send({ message: 'ok' });
     } catch (error) {
       console.error({ message: 'Error during signup', error });
