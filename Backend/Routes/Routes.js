@@ -13,7 +13,7 @@ const userJoiSchema = Joi.object({
   name: Joi.string().alphanum().min(2).max(40).required(),
   email: Joi.string().email().required(),
   confirmemail: Joi.string().email().required(),
-  password: Joi.string().min(3).required(),
+  password: Joi.string().min(6).required(),
   confirmpassword: Joi.string().min(3).required(),
   gender: Joi.string().required(),
 });
