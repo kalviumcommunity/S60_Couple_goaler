@@ -10,6 +10,11 @@ function Form() {
     Rating: '',
     PriceApprox: '',
   });
+  const getCookie = (name) => {
+    let cookieArray = document.cookie.split('; ');
+    let cookie = cookieArray.find((row) => row.startsWith(name + '='));
+    return cookie ? cookie.split('=')[1] : '';
+  };
   const handlechange = (e) => {
     const { name, value } = e.target;
     setState((prevData) => ({
@@ -21,7 +26,10 @@ function Form() {
     // e.preventDefault();
     console.log(state);
     axios
-      .post('https://s60-couple-goaler.onrender.com/store', state)
+      .post('https://s60-couple-goaler.onrender.com/store', {
+        ...state,
+        created_by: getCookie('username'),
+      })
       .then((Res) => {
         console.log(Res);
         navigate('/');
@@ -30,7 +38,6 @@ function Form() {
         console.log('bhiuu', err);
       });
   };
-  
 
   return (
     <div>
@@ -41,7 +48,10 @@ function Form() {
 
         <form method="post" action="#">
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600" htmlFor="name">
+            <label
+              className="block text-sm font-medium text-gray-600"
+              htmlFor="name"
+            >
               Place Name
             </label>
             <input
@@ -55,7 +65,10 @@ function Form() {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600" htmlFor="Rating">
+            <label
+              className="block text-sm font-medium text-gray-600"
+              htmlFor="Rating"
+            >
               Rating
             </label>
             <input
@@ -70,7 +83,10 @@ function Form() {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600" htmlFor="PriceApprox">
+            <label
+              className="block text-sm font-medium text-gray-600"
+              htmlFor="PriceApprox"
+            >
               Price Approximation
             </label>
             <input
