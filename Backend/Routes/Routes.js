@@ -8,12 +8,13 @@ const bcrypt = require('bcrypt');
 let router = express.Router();
 router.use(express.json());
 
+// added joi schema for validation
 const userJoiSchema = Joi.object({
   name: Joi.string().alphanum().min(2).max(40).required(),
   email: Joi.string().email().required(),
   confirmemail: Joi.string().email().required(),
-  password: Joi.string().required(),
-  confirmpassword: Joi.string().required(),
+  password: Joi.string().min(3).required(),
+  confirmpassword: Joi.string().min(3).required(),
   gender: Joi.string().required(),
 });
 
@@ -22,6 +23,7 @@ const userModelSchema = new mongoose.Schema({
   // profile: String,
   email: String,
   password: String,
+  token: String,
   gender: String,
   token: String,
 });

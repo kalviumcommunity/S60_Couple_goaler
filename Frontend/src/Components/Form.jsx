@@ -11,7 +11,6 @@ function Form() {
     PriceApprox: '',
     created_by: localStorage.getItem('name'),
   });
-  
   const handlechange = (e) => {
     const { name, value } = e.target;
     setState((prevData) => ({
@@ -24,7 +23,10 @@ function Form() {
     // e.preventDefault();
     console.log(state);
     axios
-      .post('https://s60-couple-goaler.onrender.com/store', state)
+      .post('https://s60-couple-goaler.onrender.com/store', {
+        ...state,
+        created_by: getCookie('username'),
+      })
       .then((Res) => {
         console.log(Res);
         navigate('/');
