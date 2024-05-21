@@ -6,10 +6,13 @@ import Home from './Home';
 
 function Login(props) {
   const navigate = useNavigate();
+  const [name, setName] = useState('');
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+
+  console.log(name);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleChange = (e) => {
@@ -22,8 +25,9 @@ function Login(props) {
     try {
       //   console.log(formData);
       const res = await axios.post('http://localhost:8080/login', formData);
-      document.cookie = 'username=' + res.data.name;
-      document.cookie="token"+res.data.token;
+      document.cookie = 'username=' + res.data.user.name;
+      document.cookie = 'token=' + res.data.user.token;
+      localStorage.setItem('name', name);
       console.log(res.data);
       if (res.data.message === 'Login sucessful') {
         setIsLoggedIn(true);
@@ -66,6 +70,21 @@ function Login(props) {
             <div className="max-w-md mx-auto text-white">
               <div className="flex items-center space-x-5 justify-center"></div>
               <div className="mt-5">
+                <label
+                  className="font-semibold text-sm text-gray-600 pb-1 block"
+                  htmlFor="login"
+                >
+                  Username
+                </label>
+                <input
+                  className="border border-slate-500 outline-none bg-gray-100 rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full  text-black"
+                  type="text"
+                  id="login"
+                  name="name"
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
                 <label
                   className="font-semibold text-sm text-gray-600 pb-1 block"
                   htmlFor="login"

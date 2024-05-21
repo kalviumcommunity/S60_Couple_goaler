@@ -7,7 +7,6 @@ const EntityCard = ({ entity }) => {
       <h3 className="font-bold">{entity.places}</h3>
       <p>Rating: {entity.Rating}⭐</p>
       <p>Price: Rs. {entity.PriceApprox}</p>
-      
     </div>
   );
 };

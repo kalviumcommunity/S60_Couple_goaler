@@ -9,12 +9,8 @@ function Form() {
     places: '',
     Rating: '',
     PriceApprox: '',
+    created_by: localStorage.getItem('name'),
   });
-  const getCookie = (name) => {
-    let cookieArray = document.cookie.split('; ');
-    let cookie = cookieArray.find((row) => row.startsWith(name + '='));
-    return cookie ? cookie.split('=')[1] : '';
-  };
   const handlechange = (e) => {
     const { name, value } = e.target;
     setState((prevData) => ({
@@ -22,6 +18,7 @@ function Form() {
       [name]: value,
     }));
   };
+
   const handleSubmit = () => {
     // e.preventDefault();
     console.log(state);
