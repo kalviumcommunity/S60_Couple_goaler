@@ -25,6 +25,7 @@ const userModelSchema = new mongoose.Schema({
   password: String,
   token: String,
   gender: String,
+  token: String,
 });
 
 const User = mongoose.model('AuthDB', userModelSchema);
