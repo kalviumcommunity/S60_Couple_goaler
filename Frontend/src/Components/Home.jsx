@@ -23,7 +23,7 @@ function Home() {
         console.log('error', err);
       });
   }, []);
-  
+
   const deletingTheItem = (id) => {
     console.log('hi');
     axios
@@ -43,7 +43,14 @@ function Home() {
           Enitites
         </h1>
       </div>
-      <div></div>
+      <div>
+        <div>
+          <h3>Place : XYZ</h3>
+          <p>Rating : 5⭐</p>
+          <p>Price : Rs. 20000</p>
+        </div>
+        <hr />
+      </div>
       <div className="grid grid-cols-2 gap-x-8 gap-y-8 mt-2.5">
         {entities.map((entity, index) => (
           <div
