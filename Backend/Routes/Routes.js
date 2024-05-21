@@ -70,6 +70,16 @@ router.delete('/store/:id', async (req, res) => {
   }
 });
 
+router.get('/login', (req, res) => {
+  User.find({})
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      console.log(err, 'error');
+    });
+});
+
 router.post('/signup', async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   const token = jwt.sign(req.body, process.env.password);

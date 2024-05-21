@@ -9,7 +9,9 @@ function Form() {
     places: '',
     Rating: '',
     PriceApprox: '',
+    created_by: localStorage.getItem('name'),
   });
+  
   const handlechange = (e) => {
     const { name, value } = e.target;
     setState((prevData) => ({
@@ -17,6 +19,7 @@ function Form() {
       [name]: value,
     }));
   };
+
   const handleSubmit = () => {
     // e.preventDefault();
     console.log(state);
@@ -30,7 +33,6 @@ function Form() {
         console.log('bhiuu', err);
       });
   };
-  
 
   return (
     <div>
@@ -41,7 +43,10 @@ function Form() {
 
         <form method="post" action="#">
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600" htmlFor="name">
+            <label
+              className="block text-sm font-medium text-gray-600"
+              htmlFor="name"
+            >
               Place Name
             </label>
             <input
@@ -55,7 +60,10 @@ function Form() {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600" htmlFor="Rating">
+            <label
+              className="block text-sm font-medium text-gray-600"
+              htmlFor="Rating"
+            >
               Rating
             </label>
             <input
@@ -70,7 +78,10 @@ function Form() {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-600" htmlFor="PriceApprox">
+            <label
+              className="block text-sm font-medium text-gray-600"
+              htmlFor="PriceApprox"
+            >
               Price Approximation
             </label>
             <input
