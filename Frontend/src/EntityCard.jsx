@@ -1,10 +1,10 @@
 import React from 'react';
-import "./App.css"
+import './App.css';
 
-const EntityCard = ({entity}) => {
+const EntityCard = ({ entity }) => {
   return (
     <div>
-      <h3 className='font-bold'>{entity.places}</h3>
+      <h3 className="font-bold">{entity.places}</h3>
       <p>Rating: {entity.Rating}⭐</p>
       <p>Price: Rs. {entity.PriceApprox}</p>
       

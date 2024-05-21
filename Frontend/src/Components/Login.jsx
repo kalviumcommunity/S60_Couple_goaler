@@ -23,6 +23,7 @@ function Login(props) {
       //   console.log(formData);
       const res = await axios.post('http://localhost:8080/login', formData);
       document.cookie = 'username=' + res.data.name;
+      document.cookie="token"+res.data.token;
       console.log(res.data);
       if (res.data.message === 'Login sucessful') {
         setIsLoggedIn(true);
